@@ -98,7 +98,6 @@ Grupos test_split(unsigned int index, double value, matriz* dataset) {
 No* get_split(matriz* dataset) {
     Vetor class_values;
     int i,j, index;
-    printf("i = %d\n",dataset->i);
     class_values.v = (double*)malloc(dataset->i*sizeof(double));
     class_values.n = dataset->i;
     for(i=0; i < dataset->i; i++) {
@@ -260,5 +259,34 @@ void imprimir_arvore(No* node, int depth) {
             imprimir_arvore(node->left, depth+1);
         if(node->right)
             imprimir_arvore(node->right, depth+1);
+    }
+}
+
+double predict(No* node, Vetor row) {
+    if(row.v[node->index] < node->value) {
+        if(node->folha) {
+            return node->v_left;
+        }
+        else {
+            if(node->left != NULL) {
+                return predict(node->left, row);
+            }
+            else {
+                return node->v_left;
+            }
+        }
+    }
+    else {
+        if(node->folha) {
+            return node->v_right;
+        }
+        else {
+            if(node->right != NULL) {
+                return predict(node->right, row);
+            }
+            else {
+                return node->v_right;
+            }
+        }
     }
 }

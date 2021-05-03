@@ -25,6 +25,8 @@ unsigned int contar(Vetor vet, double a);
 void quicksort(double values[], int began, int end);
 void eleminar_repetido(Vetor* vet);
 matriz* grupo_to_matriz(Grupo g);
+Grupo* matriz_to_grupo(matriz* m);
+double contar_maior(Vetor vet); 
 
 #endif /* VETOR_H */
 

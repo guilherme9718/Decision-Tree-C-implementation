@@ -67,7 +67,7 @@ matriz* insere_matriz(matriz* m, char* arq)
     return m;
 }
 
-int* rand_sem_rep(matriz* m, int n, int* numeros){
+int* rand_sem_rep(matriz* m, int n, int* numeros) {
     numeros = malloc(m->i * sizeof(int));
 
     for (int i = 0; i < m->i; i++) {
@@ -84,7 +84,7 @@ int* rand_sem_rep(matriz* m, int n, int* numeros){
     return numeros;
 }
 
-matriz* amostra_aleatoria(int n, matriz* m, matriz* m_a){
+matriz* amostra_aleatoria(int n, matriz* m, matriz* m_a) {
     if(n > m->i){
         printf("Amostra muito grande.\n");
         exit(1);
@@ -103,10 +103,10 @@ matriz* amostra_aleatoria(int n, matriz* m, matriz* m_a){
     return m_a;
 }
 
-matriz* coleta_dados()
+matriz* coleta_dados(char* arq)
 {
     matriz* m = NULL;
     m = aloca_struct_matriz();
-    m = insere_matriz(m, "dadosteste.csv");
+    m = insere_matriz(m, arq);
     return m;
 }

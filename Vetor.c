@@ -125,3 +125,47 @@ matriz* grupo_to_matriz(Grupo g) {
     }
     return m;
 }
+
+Grupo* matriz_to_grupo(matriz* m) {
+    int i, j;
+    Grupo* g = (Grupo*)malloc(sizeof(Grupo));
+
+    g->n = m->i;
+    g->v = (Vetor*)malloc(g->n * sizeof(Vetor));
+
+    for(i=0; i < g->n; i++) {
+        g->v[i].n = m->j;
+        g->v[i].v = (double*)malloc(m->j * sizeof(double));
+        for(j=0;j < g->v[i].n; j++) {
+            g->v[i].v[j] = m->M[i][j];
+        }  
+    }
+
+    return g;
+}
+
+double contar_maior(Vetor vet) {
+    int i, j;
+    Vetor aux;
+    aux.n = vet.n;
+    aux.v = (double*)malloc(aux.n * sizeof(double));
+
+    for(i=0; i < aux.n; i++) {
+        aux.v[i] = vet.v[i];
+    }
+
+    eleminar_repetido(&vet);
+    int maior = 0, cont=0;
+    double res;
+    for(i=0; i < vet.n; i++) {
+        cont = contar(aux, vet.v[i]);
+        if(cont > maior) {
+            res = vet.v[i];
+            maior = cont;
+        }
+    }
+
+    free(aux.v);
+
+    return res;
+}

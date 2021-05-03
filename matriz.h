@@ -18,7 +18,8 @@ void imprime_matriz(const matriz* m);
 
 matriz* insere_matriz(matriz* m, char* arq);
 
-matriz* coleta_dados();
-
+matriz* coleta_dados(char* arq);
+matriz* amostra_aleatoria(int n, matriz* m, matriz* m_a);
+int* rand_sem_rep(matriz* m, int n, int* numeros);
 
 #endif // MATRIZ_H_INCLUDED
