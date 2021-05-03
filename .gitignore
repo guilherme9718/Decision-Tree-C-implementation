@@ -1,4 +1,7 @@
 *.cbp
 /bin/*
 /obj/*
+*.dependtu
+*.csv
+*.layout
 *.depend
