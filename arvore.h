@@ -26,5 +26,6 @@ void split(No* node, int max_depth, int min_size, int depth);
 No* build_tree(matriz* m, int max_depth, int min_size);
 void imprimir_arvore(No* node, int depth);
 double predict(No* node, Vetor row);
+void desaloca_arvore(No* arv);
 
 #endif

@@ -171,6 +171,7 @@ void split(No* node, int max_depth, int min_size, int depth) {
     if(node->grupos.v != NULL) {
         left = node->grupos.v[0];
         right = node->grupos.v[1];
+        node->grupos.v = NULL;
     }
     else {
         left.v = right.v = NULL;
@@ -209,6 +210,7 @@ void split(No* node, int max_depth, int min_size, int depth) {
 
         split(node->left, max_depth, min_size, depth+1);
     }
+    desaloca_grupo(left);
 
     //processar o filho direito
     if(right.n <= min_size) {
@@ -223,6 +225,7 @@ void split(No* node, int max_depth, int min_size, int depth) {
 
         split(node->right, max_depth, min_size, depth+1);
     }
+    desaloca_grupo(right);
 }
 
 //constroi a melhor árvore com os dados, altura e tamanho mínimo das divisões
@@ -262,6 +265,7 @@ void imprimir_arvore(No* node, int depth) {
     }
 }
 
+//dado uma linha dos dados prevê o valor esperado
 double predict(No* node, Vetor row) {
     if(row.v[node->index] < node->value) {
         if(node->folha) {
@@ -287,6 +291,21 @@ double predict(No* node, Vetor row) {
             else {
                 return node->v_right;
             }
+        }
+    }
+}
+
+void desaloca_arvore(No* arv) {
+    if(arv != NULL) {
+        if(arv->folha) {
+            desaloca_grupos(arv->grupos);
+            free(arv);
+        }
+        else {
+            desaloca_grupos(arv->grupos);
+            desaloca_arvore(arv->left);
+            desaloca_arvore(arv->right);
+            free(arv);
         }
     }
 }

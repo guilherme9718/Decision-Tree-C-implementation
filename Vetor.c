@@ -126,6 +126,7 @@ matriz* grupo_to_matriz(Grupo g) {
     return m;
 }
 
+//converte a struct matriz para a struct grupo
 Grupo* matriz_to_grupo(matriz* m) {
     int i, j;
     Grupo* g = (Grupo*)malloc(sizeof(Grupo));
@@ -144,6 +145,7 @@ Grupo* matriz_to_grupo(matriz* m) {
     return g;
 }
 
+//conta qual é o valor que mais aparece no vetor vet
 double contar_maior(Vetor vet) {
     int i, j;
     Vetor aux;
@@ -168,4 +170,33 @@ double contar_maior(Vetor vet) {
     free(aux.v);
 
     return res;
+}
+
+//desaloca Vetor
+void desaloca_vetor(Vetor vet) {
+    if(vet.v == NULL)
+        return;
+    free(vet.v);
+}
+
+//desaloca Grupo
+void desaloca_grupo(Grupo g) {
+    int i;
+    if(g.v == NULL)
+        return;
+    for(i=0; i < g.n; i++) {
+        desaloca_vetor(g.v[i]);
+    }
+    free(g.v);
+}
+
+//desaloca Grupos
+void desaloca_grupos(Grupos g) {
+    int i;
+    if(g.v == NULL)
+        return;
+    for(i=0; i < g.n; i++) {
+        desaloca_grupo(g.v[i]);
+    }
+    free(g.v);
 }
