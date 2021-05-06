@@ -5,5 +5,5 @@
 *.layout
 *.depend
 dadosteste.csv
-decisionTree
+randomForest
 matriz

@@ -2,7 +2,7 @@
 #include "arvore.h"
 #include "Vetor.h"
 #include "RandomForest.h"
-#include <math.h>
+
 
 int main() {
     //nome do arquivo dos dados
@@ -36,7 +36,7 @@ int main() {
     desaloca_randomforest(arvore);
 
     //testa várias Random Forest
-    int qtd_randomforest = 30;
+    int qtd_randomforest = 10;
     double acerto_total = 0;
     double acertos[60];
     for(i=0; i < qtd_randomforest; i++) {
@@ -46,7 +46,7 @@ int main() {
         acerto_total += acerto;
         acertos[i] = acerto;
         //imprimir_radomforest(arvore);
-        printf("acerto da Random Florest [%d] = %lf\n\n", i, acerto);
+        printf("acerto da Random Forest [%d] = %lf\n\n", i, acerto);
 
         libera_matriz(tt.test);
         libera_matriz(tt.train);
@@ -63,16 +63,16 @@ int main() {
     desvio = desvio / (double)(qtd_randomforest - 1);
     desvio = sqrt(desvio);
 
-    //t de student para 95% de confiança e grau de liberdade = 29
-    double t_student = 2.046;
+    //t de student para 95% de confiança e grau de liberdade = 9
+    double t_student = 2.263;
 
     //Intervalo de confiança
     double intv_1, intv_2;
     intv_1 = media - ((t_student * desvio) / sqrt(qtd_randomforest));
     intv_2 = media + ((t_student * desvio) / sqrt(qtd_randomforest));
 
-    printf("media de acerto das Random Florests = %lf\n", media);
-    printf("desvio padrao de acerto das Random Florests = %lf\n", desvio);
+    printf("media de acerto das Random Forests = %lf\n", media);
+    printf("desvio padrao de acerto das Random Forests = %lf\n", desvio);
     printf("intervalo de confiança = %lf <= media <= %lf\n", intv_1, intv_2);
 
     libera_matriz(m);
