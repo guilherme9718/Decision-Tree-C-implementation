@@ -11,9 +11,10 @@ typedef struct RandomForest {
     size_t n; 
 } RandomForest;
 
-RandomForest* cria_random_forest(int tam, int amostra, int altura_max, matriz* dataset);
+RandomForest* cria_random_forest(int tam, int amostra_min, int altura_max, matriz* dataset);
 double prever(RandomForest* node, Vetor row);
 double porcentagem_acerto(matriz* dataset, RandomForest* arv);
+void imprimir_radomforest(RandomForest* arv);
 void desaloca_randomforest(RandomForest* arv); 
 
 #endif

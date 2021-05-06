@@ -241,21 +241,21 @@ void imprimir_arvore(No* node, int depth) {
     int i;
     if(node->folha) {
         for(i=0; i < depth; i++) {
-            printf(" ");
+            printf("    ");
         }
         printf("[X%lu < %.3lf]\n", node->index+1, node->value);
-        for(i=0; i < depth; i++) {
-            printf(" ");
+        for(i=0; i < depth+1; i++) {
+            printf("    ");
         }
         printf("[%lf]\n", node->v_left);
-        for(i=0; i < depth; i++) {
-            printf(" ");
+        for(i=0; i < depth+1; i++) {
+            printf("    ");
         }
         printf("[%lf]\n", node->v_right);
     }
     else {
         for(i=0; i < depth; i++) {
-            printf(" ");
+            printf("    ");
         }
         printf("[X%lu < %.3lf]\n", node->index, node->value);
         if(node->left)

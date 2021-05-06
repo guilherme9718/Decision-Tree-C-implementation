@@ -11,6 +11,11 @@ typedef struct matriz{
     int j;
 }matriz;
 
+typedef struct train_test{
+    matriz* train;
+    matriz* test;
+} TrainTest;
+
 matriz* aloca_struct_matriz();
 
 void libera_matriz(matriz* m);
@@ -21,5 +26,6 @@ matriz* insere_matriz(matriz* m, char* arq);
 matriz* coleta_dados(char* arq);
 matriz* amostra_aleatoria(int n, matriz* m, matriz* m_a);
 int* rand_sem_rep(matriz* m, int n, int* numeros);
+TrainTest train_test_split(matriz* dataset, double p);
 
 #endif // MATRIZ_H_INCLUDED

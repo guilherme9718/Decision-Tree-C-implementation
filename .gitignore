@@ -2,8 +2,8 @@
 /bin/*
 /obj/*
 *.dependtu
-*.csv
 *.layout
 *.depend
+dadosteste.csv
 decisionTree
 matriz
